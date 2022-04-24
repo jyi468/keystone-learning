@@ -1,0 +1,11 @@
+query getAllPosts {
+  posts {
+    title
+  }
+}
+
+query getPublishedPosts {
+  posts(where: { status: { equals: "published" } }) {
+    title
+  }
+}
