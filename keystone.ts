@@ -1,5 +1,7 @@
 import { config, list } from "@keystone-6/core";
 import { relationship, select, text, timestamp, password } from '@keystone-6/core/fields';
+import { document } from "@keystone-6/fields-document";
+
 import { withAuth, session } from './auth';
 
 const lists = {
@@ -32,7 +34,19 @@ const lists = {
                 ],
                 defaultValue: 'draft',
                 ui: { displayMode: 'segmented-control' },
-            })
+            }),
+            content: document({
+                formatting: true,
+                links: true,
+                dividers: true,
+                layouts: [
+                  [1, 1],
+                  [1, 1, 1],
+                  [2, 1],
+                  [1, 2],
+                  [1, 2, 1],
+                ],
+              }),
         }
     })
 };

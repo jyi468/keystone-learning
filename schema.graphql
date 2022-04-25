@@ -127,10 +127,15 @@ type Post {
   publishedAt: DateTime
   author: User
   status: String
+  content: Post_content_Document
 }
 
 scalar DateTime
   @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339#section-5.6")
+
+type Post_content_Document {
+  document(hydrateRelationships: Boolean! = false): JSON!
+}
 
 input PostWhereUniqueInput {
   id: ID
@@ -198,6 +203,7 @@ input PostUpdateInput {
   publishedAt: DateTime
   author: UserRelateToOneForUpdateInput
   status: String
+  content: JSON
 }
 
 input UserRelateToOneForUpdateInput {
@@ -216,6 +222,7 @@ input PostCreateInput {
   publishedAt: DateTime
   author: UserRelateToOneForCreateInput
   status: String
+  content: JSON
 }
 
 input UserRelateToOneForCreateInput {
